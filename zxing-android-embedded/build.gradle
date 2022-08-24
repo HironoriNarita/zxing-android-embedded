@@ -6,7 +6,6 @@ ext.artifactId = 'zxing-android-embedded'
 
 
 // Publishing config from https://getstream.io/blog/publishing-libraries-to-mavencentral-2021/
-// test
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
 ext["signing.secretKey"] = ''
