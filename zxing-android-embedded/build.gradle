@@ -8,7 +8,7 @@ ext.artifactId = 'zxing-android-embedded'
 // Publishing config from https://getstream.io/blog/publishing-libraries-to-mavencentral-2021/
 ext["signing.keyId"] = ''
 ext["signing.password"] = ''
-ext["signing.secretKeyRingFile"] = ''
+ext["signing.secretKey"] = ''
 ext["ossrhUsername"] = ''
 ext["ossrhPassword"] = ''
 ext["sonatypeStagingProfileId"] = ''
@@ -23,7 +23,7 @@ if (secretPropsFile.exists()) {
 } else {
     ext["signing.keyId"] = System.getenv('SIGNING_KEY_ID')
     ext["signing.password"] = System.getenv('SIGNING_PASSWORD')
-    ext["signing.secretKeyRingFile"] = System.getenv('SIGNING_SECRET_KEY_RING_FILE')
+    ext["signing.secretKey"] = System.getenv('SIGNING_SECRET_KEY_RING_FILE')
     ext["ossrhUsername"] = System.getenv('OSSRH_USERNAME')
     ext["ossrhPassword"] = System.getenv('OSSRH_PASSWORD')
     ext["sonatypeStagingProfileId"] = System.getenv('SONATYPE_STAGING_PROFILE_ID')
@@ -103,28 +103,28 @@ project.afterEvaluate {
                 pom {
                     name = project.artifactId
                     description = 'Barcode scanner library for Android, based on the ZXing decoder'
-                    url = 'https://github.com/journeyapps/zxing-android-embedded'
+                    url = 'https://github.com/HironoriNarita/zxing-android-embedded'
 
                     licenses {
                         license {
                             name = 'The Apache License, Version 2.0'
-                            url = 'https://github.com/journeyapps/zxing-android-embedded/blob/master/COPYING'
+                            url = 'https://github.com/HironoriNarita/zxing-android-embedded/blob/master/COPYING'
                         }
                     }
 
-                    developers {
-                        developer {
-                            id = ''
-                            name = 'Ralf Kistner'
-                            email = 'ralf@journeyapps.com'
-                            organization = 'Journey Mobile, Inc'
-                            organizationUrl = 'https://journeyapps.com'
-                        }
-                    }
+//                    developers {
+//                        developer {
+//                            id = ''
+//                            name = 'Ralf Kistner'
+//                            email = 'ralf@journeyapps.com'
+//                            organization = 'Journey Mobile, Inc'
+//                            organizationUrl = 'https://journeyapps.com'
+//                        }
+//                    }
                     scm {
-                        connection = 'scm:git:github.com/journeyapps/zxing-android-embedded.git'
-                        developerConnection = 'scm:git:ssh://github.com/journeyapps/zxing-android-embedded.git'
-                        url = 'https://github.com/journeyapps/zxing-android-embedded'
+                        connection = 'scm:git:github.com/HironoriNarita/zxing-android-embedded.git'
+                        developerConnection = 'scm:git:ssh://github.com/HironoriNarita/zxing-android-embedded.git'
+                        url = 'https://github.com/HironoriNarita/zxing-android-embedded'
                     }
                 }
 
@@ -150,10 +150,10 @@ project.afterEvaluate {
         repositories {
             maven {
                 name = "sonatype"
-                url = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+                url = "https://maven.pkg.github.com/HironoriNarita/zxing-android-embedded"
                 credentials {
-                    username ossrhUsername
-                    password ossrhPassword
+                    username project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                    password project.findProperty("gpr.key") ?: System.getenv("TOKEN")
                 }
             }
         }
