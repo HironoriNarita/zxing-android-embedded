@@ -10,8 +10,8 @@ public class Size implements Comparable<Size> {
     public final int height;
 
     public Size(int width, int height) {
-        this.width = width;
-        this.height = height;
+        this.width = width / 2;
+        this.height = height / 2;
     }
 
     /**
