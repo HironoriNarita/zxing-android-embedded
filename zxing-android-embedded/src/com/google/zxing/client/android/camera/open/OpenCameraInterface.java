@@ -80,7 +80,7 @@ public final class OpenCameraInterface {
         if (cameraId == -1) {
             return null;
         } else {
-            return Camera.open(cameraId);
+            return Camera.open(0);
         }
     }
 }
