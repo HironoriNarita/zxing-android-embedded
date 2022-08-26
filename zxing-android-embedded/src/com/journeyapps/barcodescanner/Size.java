@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
  *
  */
 public class Size implements Comparable<Size> {
-    public final int width;
-    public final int height;
+    public int width;
+    public int height;
 
     public Size(int width, int height) {
         this.width = width;
